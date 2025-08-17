@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* BLVCK Design System - Dark Luxury Aesthetic */
+
+@layer base {
+  :root {
+    /* BLVCK Brand Colors */
+    --blvck-black: 0 0% 0%;
+    --blvck-white: 0 0% 100%;
+    --blvck-gray-900: 0 0% 7%;
+    --blvck-gray-800: 0 0% 12%;
+    --blvck-gray-700: 0 0% 20%;
+    --blvck-gray-600: 0 0% 30%;
+    --blvck-gray-500: 0 0% 50%;
+    --blvck-gray-400: 0 0% 70%;
+    --blvck-gray-300: 0 0% 85%;
+    --blvck-gray-200: 0 0% 92%;
+    --blvck-gray-100: 0 0% 96%;
+
+    /* Base Design Tokens */
+    --background: var(--blvck-black);
+    --foreground: var(--blvck-white);
+
+    --card: var(--blvck-gray-900);
+    --card-foreground: var(--blvck-white);
+
+    --popover: var(--blvck-black);
+    --popover-foreground: var(--blvck-white);
+
+    --primary: var(--blvck-white);
+    --primary-foreground: var(--blvck-black);
+
+    --secondary: var(--blvck-gray-800);
+    --secondary-foreground: var(--blvck-white);
+
+    --muted: var(--blvck-gray-800);
+    --muted-foreground: var(--blvck-gray-400);
+
+    --accent: var(--blvck-gray-700);
+    --accent-foreground: var(--blvck-white);
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: var(--blvck-white);
+
+    --border: var(--blvck-gray-800);
+    --input: var(--blvck-gray-800);
+    --ring: var(--blvck-white);
+
+    --radius: 0rem;
+
+    /* BLVCK Gradients */
+    --gradient-dark: linear-gradient(135deg, hsl(var(--blvck-black)), hsl(var(--blvck-gray-900)));
+    --gradient-overlay: linear-gradient(to bottom, transparent 0%, hsl(var(--blvck-black) / 0.6) 100%);
+    
+    /* BLVCK Shadows */
+    --shadow-luxury: 0 25px 50px -12px hsl(var(--blvck-black) / 0.5);
+    --shadow-card: 0 4px 25px hsl(var(--blvck-black) / 0.15);
+
+    /* BLVCK Transitions */
+    --transition-luxury: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-smooth: all 0.3s ease-out;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* BLVCK Button Variants */
+  .btn-blvck {
+    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium tracking-wider uppercase;
+    @apply bg-primary text-primary-foreground border border-primary;
+    @apply transition-all duration-300 hover:bg-transparent hover:text-primary;
+  }
+
+  .btn-blvck-ghost {
+    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium tracking-wider uppercase;
+    @apply bg-transparent text-primary border border-primary;
+    @apply transition-all duration-300 hover:bg-primary hover:text-primary-foreground;
+  }
+
+  /* BLVCK Navigation */
+  .nav-link {
+    @apply relative text-sm font-medium tracking-wider uppercase text-foreground;
+    @apply transition-all duration-300 hover:text-muted-foreground;
+  }
+
+  .nav-link::after {
+    @apply content-[''] absolute bottom-0 left-0 w-0 h-px bg-foreground;
+    @apply transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  /* BLVCK Card Hover Effects */
+  .card-luxury {
+    @apply relative overflow-hidden bg-card rounded-none;
+    @apply transition-all duration-500 hover:scale-[1.02];
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-luxury:hover {
+    box-shadow: var(--shadow-luxury);
+  }
+
+  /* BLVCK Image Overlay */
+  .image-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent;
+    @apply opacity-0 transition-opacity duration-300;
+  }
+
+  .image-overlay.active,
+  .card-luxury:hover .image-overlay {
+    @apply opacity-100;
+  }
+
+  /* BLVCK Text Styles */
+  .text-luxury {
+    @apply text-4xl md:text-6xl lg:text-7xl font-light tracking-wider;
+  }
+
+  .text-section-title {
+    @apply text-2xl md:text-3xl font-light tracking-wider uppercase;
+  }
+
+  /* BLVCK Divider */
+  .divider-luxury {
+    @apply w-24 h-px bg-foreground mx-auto my-8;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
